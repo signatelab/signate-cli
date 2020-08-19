@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import os
 from unittest.mock import MagicMock
 import pickle
 
@@ -60,7 +61,8 @@ def convert_normal(cli):
 
 def convert_raise_error(cli):
     api_instance = cli.api_instance
-    with open('ApiException.pickle', mode='rb') as f:
+    pickle_file = os.path.join(os.path.dirname(__file__), 'ApiException.pickle')
+    with open(pickle_file, mode='rb') as f:
         apiException = pickle.load(f)
     api_instance.get_competitions = MagicMock(side_effect=apiException)
     api_instance.get_competition_files = MagicMock(side_effect=apiException)
