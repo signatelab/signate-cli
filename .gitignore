@@ -1,7 +1,10 @@
 .DS_Store
 
-.idea/
-__pycache__/
+.vscode
+.idea
+
+__pycache__
+.pytest_cache
 
 *.tmp
 *.egg-info
@@ -10,7 +13,3 @@ __pycache__/
 venv/
 dist/
 build/
-
-.pytest_cache/
-
-.idea

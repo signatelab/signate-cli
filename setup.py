@@ -31,7 +31,7 @@ setup(
     name='signate',
     version=info.VERSION,
     description=info.NAME,
-    url='https://signate.jp',
+    url='https://github.com/signatelab/signate-cli',
     long_description=codecs.open('README.md', 'r', 'utf-8').read(),
     long_description_content_type='text/markdown',
     author='SIGNATE Inc.',
