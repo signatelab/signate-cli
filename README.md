@@ -1,3 +1,5 @@
+![pytest](https://github.com/signatelab/signate-cli/workflows/pytest/badge.svg)
+
 # **SIGNATE CLI**
 [SIGNATE](https://signate.jp) の公式APIコマンドラインインターフェイス(以下：SIGNATE CLI)です。  
 SIGNATEはData Science Competitionのご提供を始めとした、データサイエンティストの皆様のための統合プラットフォームです。
