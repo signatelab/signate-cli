@@ -1,0 +1,13 @@
+name: signate-cli
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        uses: docker://python:3.6
+        run: |
+          pip install -r requirements.txt
+          pytest
+        shell: bash
