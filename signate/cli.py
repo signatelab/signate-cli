@@ -33,11 +33,14 @@ def success(message):
     click.echo(click.style(message, fg='green'))
     exit(0)
 
+
 def warn(message):
     click.echo(click.style(message, fg='yellow'))
 
+
 def error(message):
     click.echo(click.style(message, fg='red'))
+
 
 def die(message):
     error(message)
@@ -206,6 +209,7 @@ def main():
             die(message)
         else:
             die(str(ae.status) + ' ' + str(ae.reason))
+
 
 def prepare():
     api_token = get_api_token()

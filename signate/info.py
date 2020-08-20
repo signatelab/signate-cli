@@ -1,4 +1,3 @@
-
 #!/usr/bin/python
 #
 # Copyright 2018 - 2020 SIGNATE Inc.
