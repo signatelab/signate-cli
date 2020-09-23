@@ -139,16 +139,11 @@ def download(competition_id, file_id=None, path=None):
     """Download the file of competition"""
     prepare()
     if file_id:
-        api_response = api_instance.post_competition_file(competition_id, file_id)
+        api_response = fileDownload(competition_id, file_id, path)
     else:
         api_response = api_instance.post_competition_files(competition_id)
-    for file in sorted(api_response['data'], key=itemgetter('size')):
-        click.echo(file['name'])
-        if path:
-            wget.download(file['url'], out=path)
-        else:
-            wget.download(file['url'])
-        click.echo()
+        for file in sorted(api_response['data'], key=itemgetter('size')):
+            fileDownload(competition_id, file['fileId'], path)
     for message in api_response.get('warnings', []):
         warn(message)
     success('\nDownload completed.')
@@ -187,6 +182,18 @@ def confirm(required_agreement):
         accept(required_agreement['competitionId'])
     else:
         pass
+
+
+def fileDownload(competition_id, file_id, path):
+    api_response = api_instance.post_competition_file(competition_id, file_id)
+    for file in sorted(api_response['data'], key=itemgetter('size')):
+        click.echo(file['name'])
+        if path:
+            wget.download(file['url'], out=path)
+        else:
+            wget.download(file['url'])
+    click.echo()
+    return api_response
 
 
 def main():
