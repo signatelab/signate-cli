@@ -186,12 +186,13 @@ def confirm(required_agreement):
 
 def fileDownload(competition_id, file_id, path):
     api_response = api_instance.post_competition_file(competition_id, file_id)
-    for file in sorted(api_response['data'], key=itemgetter('size')):
-        click.echo(file['name'])
-        if path:
-            wget.download(file['url'], out=path)
-        else:
-            wget.download(file['url'])
+    if not api_response['data'][0]:
+        return api_response
+    click.echo(api_response['data'][0]['name'])
+    if path:
+        wget.download(api_response['data'][0]['url'], out=path)
+    else:
+        wget.download(api_response['data'][0]['url'])
     click.echo()
     return api_response
 
