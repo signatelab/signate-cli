@@ -22,7 +22,8 @@ $ pip install signate
  2. アカウント登録後、[アカウント設定](https://signate.jp/account_settings) 画面の "API Token" の "作成" をクリック  
  3. "新規作成" をクリックしてAPI Token(``signate.json``)を取得  
  4. 取得したAPI Tokenを ``~/.signate``直下に配置   
- ＊ SIGNATE CLI 上でも API Token は取得できます。詳しくは「利用方法」⑤をご参照ください。
+ ＊ SIGNATE CLI 上でも API Token は取得できます。詳しくは「利用方法」⑤をご参照ください。  
+ ＊ SNS で会員登録した場合は[アカウント設定](https://signate.jp/account_settings) 画面でのみ API Token を取得可能です。
 
 以下のコマンドでヘルプが表示されましたら利用準備完了です。
 
