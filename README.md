@@ -1,4 +1,4 @@
-![pytest](https://github.com/signatelab/signate-cli/workflows/pytest/badge.svg)
+![pytest](https://github.com/signatelab/signate-cli/workflows/pytest/badge.svg) [![PyPI version](https://badge.fury.io/py/signate.svg)](https://badge.fury.io/py/signate)
 
 # **SIGNATE CLI**
 [SIGNATE](https://signate.jp) の公式APIコマンドラインインターフェイス(以下：SIGNATE CLI)です。  
