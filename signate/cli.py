@@ -141,7 +141,7 @@ def download(competition_id, file_id=None, path=None):
     if file_id:
         api_response = fileDownload(competition_id, file_id, path)
     else:
-        api_response = api_instance.post_competition_files(competition_id)
+        api_response = api_instance.get_competition_files(competition_id)
         for file in sorted(api_response['data'], key=itemgetter('size')):
             fileDownload(competition_id, file['fileId'], path)
     for message in api_response.get('warnings', []):
