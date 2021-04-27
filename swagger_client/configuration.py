@@ -13,6 +13,7 @@
 
 from __future__ import absolute_import
 
+import os
 import copy
 import logging
 import multiprocessing
@@ -90,7 +91,7 @@ class Configuration(object):
         self.connection_pool_maxsize = multiprocessing.cpu_count() * 5
 
         # Proxy URL
-        self.proxy = None
+        self.proxy = os.environ.get('http_proxy') or os.environ.get('https_proxy')
         # Safe chars for path_param
         self.safe_chars_for_path_param = ''
 
