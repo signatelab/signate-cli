@@ -25,7 +25,7 @@ if sys.version_info[:2] < (3, 6):
     raise RuntimeError("Python version >= 3.6 required.")
 
 CLI_REQUIRES = ['click', 'tabulate', 'wget']
-SWAGGER_REQUIRES = ['urllib3 >= 1.26.4', 'six >= 1.10', 'certifi', 'python-dateutil']
+SWAGGER_REQUIRES = ['urllib3 >= 1.26.7', 'six >= 1.16', 'certifi', 'python-dateutil']
 
 setup(
     name='signate',
