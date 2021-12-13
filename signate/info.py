@@ -15,4 +15,4 @@
 # limitations under the License.
 
 NAME = 'SIGNATE CLI'
-VERSION = '0.9.8'
+VERSION = '0.9.9'
