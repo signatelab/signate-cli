@@ -143,7 +143,9 @@ def download(competition_id, file_id=None, path=None):
     else:
         api_response = api_instance.get_competition_files(competition_id)
         for file in sorted(api_response['data'], key=itemgetter('size')):
-            fileDownload(competition_id, file['fileId'], path)
+            download_response = fileDownload(competition_id, file['fileId'], path)
+            for message in download_response.get('warnings', []):
+                warn(message)
     for message in api_response.get('warnings', []):
         warn(message)
     success('\nDownload completed.')
@@ -186,7 +188,7 @@ def confirm(required_agreement):
 
 def fileDownload(competition_id, file_id, path):
     api_response = api_instance.post_competition_file(competition_id, file_id)
-    if not api_response['data'][0]:
+    if not api_response['data']:
         return api_response
     click.echo(api_response['data'][0]['name'])
     if path:
