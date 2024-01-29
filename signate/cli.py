@@ -143,7 +143,9 @@ def download(competition_id, file_id=None, path=None):
     else:
         api_response = api_instance.get_competition_files(competition_id)
         for file in sorted(api_response['data'], key=itemgetter('size')):
-            fileDownload(competition_id, file['fileId'], path)
+            download_response = fileDownload(competition_id, file['fileId'], path)
+            for message in download_response.get('warnings', []):
+                warn(message)
     for message in api_response.get('warnings', []):
         warn(message)
     success('\nDownload completed.')
@@ -166,27 +168,16 @@ def submit(competition_id, result_file, note=None):
     success(api_response.message)
 
 
-def accept(competition_id):
-    prepare()
-    api_response = api_instance.post_competition_agreement(competition_id)
-    success(api_response.message)
-
-
 def confirm(required_agreement):
-    prepare()
     prompt_message = dedent("""
-    %s
-    Please read the terms of use before accepting: %s
-    """ % (required_agreement['prompt'], click.style(required_agreement['termsUrl'], fg='blue')))
-    if click.confirm(prompt_message):
-        accept(required_agreement['competitionId'])
-    else:
-        pass
+    Please read the terms of use and click "Join": %s
+    """ % (click.style(required_agreement['termsUrl'], fg='blue')))
+    click.echo(prompt_message)
 
 
 def fileDownload(competition_id, file_id, path):
     api_response = api_instance.post_competition_file(competition_id, file_id)
-    if not api_response['data'][0]:
+    if not api_response['data']:
         return api_response
     click.echo(api_response['data'][0]['name'])
     if path:
